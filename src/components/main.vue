@@ -1,11 +1,18 @@
 <template>
   <Layout class="main-container">
     <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
+      <div class="main-login"></div>
       <Menu :active-name="menuActiveName" theme="dark" width="auto" :class="menuitemClasses">
-        <MenuItem v-for="(item, i) in menus" :key="i" :name="item.url" :to="item.url" >
-          <Icon class="iconfont iconadd" :class="item.icon"></Icon>
-          <span>{{item.name}}</span>
-        </MenuItem>
+        <Submenu v-for="(item, i) in menus" :key="i" :name="item.level" >
+            <template slot="title" :to="item.url" >
+                <Icon class="iconfont" :class="item.icon"></Icon>
+                {{item.name}}
+            </template>
+            <MenuItem v-for="(child, i) in item.children" :key="i" :name="child.level" :to="child.url" >
+              <Icon class="iconfont" :class="child.icon"></Icon>
+              {{child.name}}
+            </MenuItem>
+        </Submenu>
       </Menu>
     </Sider>
     <Layout>
@@ -32,11 +39,29 @@ export default {
     return {
       isCollapsed: false,
       menus: [
-        {name: '项目列表', icon: 'iconliebiao', url: 'projectList'},
-        {name: '创建项目', icon: 'iconadd', url: 'addProject'},
-        {name: 'demo', icon: 'iconadd', url: 'demo'}
+        {
+          level: '1',
+          name: '维修中心',
+          icon: 'iconliebiao',
+          url: 'projectList',
+          children: [
+            {level: '1-1', name: '接单车', icon: 'iconadd', url: 'demo1'},
+            {level: '1-2', name: '预约单', icon: 'iconadd', url: 'demo2'},
+            {level: '1-3', name: '维修历史', icon: 'iconadd', url: 'demo3'}
+          ]
+        },
+        {level: '2', name: '仓库管理', icon: 'iconliebiao', url: 'demo4'},
+        {
+          level: '3',
+          name: '财务管理',
+          icon: 'iconliebiao',
+          children: [
+            {level: '3-1', name: '应付账款', icon: 'iconadd', url: 'demo4'},
+            {level: '3-2', name: '应收账款', icon: 'iconadd', url: 'demo5'}
+          ]},
+        {level: '4', name: '经营报表', icon: 'iconliebiao', url: 'demo'}
       ],
-      menuActiveName: 'projectList'
+      menuActiveName: '1-1'
     }
   },
   computed: {
@@ -60,6 +85,10 @@ export default {
   position: absolute;
   height: 100%;
   width: 100%;
+  .main-login{
+    height:50px;
+    background: green;
+  }
   .ivu-layout-header{
     height:50px;
     line-height:50px;
