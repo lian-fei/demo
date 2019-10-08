@@ -24,6 +24,15 @@
           type="md-menu"
           size="24"
         ></Icon>
+        <BreadcrumbItem to="/">
+            <Icon type="ios-home-outline"></Icon> 首页
+        </BreadcrumbItem>
+        <BreadcrumbItem to="/demo2">
+            <Icon type="logo-buffer"></Icon> 维修中心
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+            <Icon type="ios-cafe"></Icon> 接单车
+        </BreadcrumbItem>
       </Header>
       <Content class="content-box" :style="{margin: '15px', background: '#fff', minHeight: '260px'}">
         <router-view/>
