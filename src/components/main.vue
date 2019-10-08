@@ -33,7 +33,8 @@ export default {
       isCollapsed: false,
       menus: [
         {name: '项目列表', icon: 'iconliebiao', url: 'projectList'},
-        {name: '创建项目', icon: 'iconadd', url: 'addProject'}
+        {name: '创建项目', icon: 'iconadd', url: 'addProject'},
+        {name: 'demo', icon: 'iconadd', url: 'demo'}
       ],
       menuActiveName: 'projectList'
     }

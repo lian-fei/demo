@@ -11,7 +11,8 @@ export default new Router({
       component: () => import('@/components/main'),
       children: [
         {path: 'addproject', name: 'addproject', component: () => import('@/components/addproject')},
-        {path: 'projectList', name: 'projectList', component: () => import('@/components/projectList')}
+        {path: 'projectList', name: 'projectList', component: () => import('@/components/projectList')},
+        {path: 'demo', name: 'demo', component: () => import('@/components/demo')}
       ]
     },
     {
