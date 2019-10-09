@@ -39,7 +39,17 @@
           </Breadcrumb>
         </div>
       </Header>
-      <Content class="content-box" :style="{margin: '15px', background: '#fff', minHeight: '260px'}">
+      <div class="browerbox">
+        <div class="browerbj">
+          <ul class="clearfix">
+            <li><span></span>首页</li>
+            <li class="current" ><span></span>接车单详情<i class="iconfont iconguanbi"></i></li>
+            <li><span></span>接车单<i class="iconfont iconguanbi"></i></li>
+            <li><span></span>新建接车单<i class="iconfont iconguanbi"></i></li>
+          </ul>
+        </div>
+      </div>
+      <Content class="content-box" :style="{margin: '10px', background: '#fff', minHeight: '260px'}">
         <router-view/>
       </Content>
     </Layout>
@@ -114,10 +124,45 @@ export default {
   }
   .content-box{
     overflow-y:auto;
-    padding:15px;
   }
   .crumbbox{
     display: inline-block;
+  }
+  .browerbox{
+    background:#e2e2e2;
+    padding:5px 0;
+    .browerbj{
+      background:#f5f7f9;
+      padding:5px 10px;
+      li{
+        float:left;
+        margin-right:5px;
+        padding:0 10px;
+        line-height: 30px;
+        color:#616477;
+        border:solid 1px #eaeaea;
+        background: #fff;
+        font-size:12px;
+        span{
+          width:10px;
+          height:10px;
+          display: inline-block;
+          border-radius: 50%;
+          background: #e9eaec;
+          margin-right:10px;
+        }
+        i{
+          // background: red;
+          position: relative;
+          display: inline-block;
+          font-size:12px;
+          margin-left:10px;
+        }
+      }
+      .current{
+        color:#70b2ef;
+      }
+    }
   }
 }
 .layout {
