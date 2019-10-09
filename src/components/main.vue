@@ -1,7 +1,7 @@
 <template>
   <Layout class="main-container">
     <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
-      <div class="main-login"></div>
+      <div class="main-login">logo</div>
       <Menu :active-name="menuActiveName" theme="dark" width="auto" :class="menuitemClasses">
         <Submenu v-for="(item, i) in menus" :key="i" :name="item.level" >
             <template slot="title" :to="item.url" >
@@ -24,15 +24,20 @@
           type="md-menu"
           size="24"
         ></Icon>
-        <BreadcrumbItem to="/">
-            <Icon type="ios-home-outline"></Icon> 首页
-        </BreadcrumbItem>
-        <BreadcrumbItem to="/demo2">
-            <Icon type="logo-buffer"></Icon> 维修中心
-        </BreadcrumbItem>
-        <BreadcrumbItem>
-            <Icon type="ios-cafe"></Icon> 接单车
-        </BreadcrumbItem>
+
+        <div class="crumbbox">
+          <Breadcrumb>
+            <BreadcrumbItem to="/">
+                <Icon type="ios-home-outline"></Icon> 首页
+            </BreadcrumbItem>
+            <BreadcrumbItem to="/components/breadcrumb">
+                <Icon class=" iconfont icongongju3"></Icon> 维修中心
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+                <Icon class=" iconfont iconshuye2" ></Icon> 接单车
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </div>
       </Header>
       <Content class="content-box" :style="{margin: '15px', background: '#fff', minHeight: '260px'}">
         <router-view/>
@@ -51,24 +56,28 @@ export default {
         {
           level: '1',
           name: '维修中心',
-          icon: 'iconliebiao',
+          icon: 'icongongju3',
           url: 'projectList',
           children: [
-            {level: '1-1', name: '接单车', icon: 'iconadd', url: 'demo1'},
-            {level: '1-2', name: '预约单', icon: 'iconadd', url: 'demo2'},
-            {level: '1-3', name: '维修历史', icon: 'iconadd', url: 'demo3'}
+            {level: '1-1', name: '接单车', icon: 'iconshuye2', url: 'demo1'},
+            {level: '1-2', name: '预约单', icon: 'iconshuye2', url: 'demo2'},
+            {level: '1-3', name: '维修历史', icon: 'iconshuye2', url: 'demo3'}
           ]
         },
-        {level: '2', name: '仓库管理', icon: 'iconliebiao', url: 'demo4'},
+        {level: '2', name: '仓库管理', icon: 'iconshuye', url: 'demo4'},
         {
           level: '3',
           name: '财务管理',
-          icon: 'iconliebiao',
+          icon: 'iconqian',
           children: [
-            {level: '3-1', name: '应付账款', icon: 'iconadd', url: 'demo4'},
-            {level: '3-2', name: '应收账款', icon: 'iconadd', url: 'demo5'}
+            {level: '3-1', name: '应付账款', icon: 'iconshuye2', url: 'demo4'},
+            {level: '3-2', name: '应收账款', icon: 'iconshuye2', url: 'demo5'}
           ]},
-        {level: '4', name: '经营报表', icon: 'iconliebiao', url: 'demo'}
+        {level: '4', name: '经营报表', icon: 'iconbingtu', url: 'demo'},
+        {level: '5', name: '客户管理', icon: 'iconduoren', url: 'demo'},
+        {level: '6', name: '基础资料', icon: 'iconziliao', url: 'demo'},
+        {level: '7', name: '数据管理', icon: 'iconshuju', url: 'demo'},
+        {level: '8', name: '系统设置', icon: 'iconshezhi', url: 'demo'}
       ],
       menuActiveName: '1-1'
     }
@@ -95,16 +104,20 @@ export default {
   height: 100%;
   width: 100%;
   .main-login{
-    height:50px;
-    background: green;
-  }
-  .ivu-layout-header{
-    height:50px;
-    line-height:50px;
+    height:64px;
+    line-height: 64px;
+    background: #515a6e;
+    font-size:30px;
+    color:#fff;
+    text-align:center;
+    font-weight: bold;
   }
   .content-box{
     overflow-y:auto;
     padding:15px;
+  }
+  .crumbbox{
+    display: inline-block;
   }
 }
 .layout {
